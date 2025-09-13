@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Your Free Cash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url(bg.png.jpg);
+        }
+        .text-neon-green {
+            color: #00e060;
+        }
+        .bg-neon-green {
+            background-color: #00e060;
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Container -->
+    <div class="max-w-5xl w-full mx-auto bg-gray-900 rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105 border border-gray-700">
+        <div class="flex flex-col lg:flex-row items-center justify-between p-6 lg:p-12">
+            <!-- Left Side: Text Content -->
+            <div class="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-12">
+                <div class="flex items-center justify-center lg:justify-start mb-4">
+                    <img src="hmm.png.png" alt="Cash App Logo" class="w-16 h-16 mr-4 rounded-full">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-wide text-neon-green">
+                        Get $750 Now
+                    </h1>
+                </div>
+                <p class="text-gray-300 text-lg sm:text-xl mb-6">
+                    Join millions who are using Cash App to send, spend, save, and invest money. Don't miss out on this exclusive offer!
+                </p>
+                <ul class="text-gray-400 text-base sm:text-lg space-y-2 mb-8">
+                    <li class="flex items-center justify-center lg:justify-start">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Easy Sign-up in Minutes
+                    </li>
+                    <li class="flex items-center justify-center lg:justify-start">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Get a Free Bonus on Your First Transaction
+                    </li>
+                    <li class="flex items-center justify-center lg:justify-start">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Send Money to Friends Instantly
+                    </li>
+                </ul>
+                <!-- ACTION BUTTON -->
+                <button id="ctaButton" class="w-full sm:w-auto bg-neon-green text-black font-bold text-xl py-4 px-10 rounded-full shadow-lg hover:bg-green-300 transition-colors duration-300 transform hover:scale-105">
+                    Claim Your $750
+                </button>
+            </div>
+
+            <!-- Right Side: Image -->
+            <div class="flex-1 flex items-center justify-center">
+                <img src="1000058097.jpg" alt="Cash App offer with $75 on phone screen" class="w-full max-w-lg h-auto rounded-3xl shadow-2xl border-4 border-neon-green transform transition-transform duration-500 hover:rotate-3">
+
+
+</div>
+        </div>
+        <p class="text-center text-xs text-gray-500 p-4">
+            Offer subject to terms and conditions. Valid for new users only.
+        </p>
+    </div>
+
+    <!-- Message Box (replaces alert) -->
+    <div id="messageBox" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white p-6 rounded-xl shadow-2xl z-50 transform scale-0 transition-transform duration-300 ease-out border border-gray-700">
+        <div class="flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-neon-green">Redirecting...</h3>
+            <p class="text-center mb-4">Please wait while we take you to your exclusive offer.</p>
+            <button id="closeMessage" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full transition-colors duration-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const ctaButton = document.getElementById('ctaButton');
+        const messageBox = document.getElementById('messageBox');
+        const closeMessage = document.getElementById('closeMessage');
+        
+        // This is where you insert your CPA offer link.
+        // Replace 'YOUR_CPA_LINK_HERE' with the actual URL.
+        const offerLink = 'YOUR_CPA_LINK_HERE';
+
+        // Add an onerror handler for both images as a fallback
+        document.querySelector('img[alt="Cash App Logo"]').onerror = function() {
+            this.src = "https://placehold.co/64x64/000/00e060?text=$";
+        };
+        document.querySelector('img[alt="Cash App offer with $75 on phone screen"]').onerror = function() {
+            this.src = "https://placehold.co/600x400/000/00e060?text=CASH+APP";
+        };
+
+        // Attach a click event listener to the button
+        ctaButton.addEventListener('click', () => {
+            if (offerLink === 'YOUR_CPA_LINK_HERE') {
+                // If the link is not set, show a message instead of redirecting
+                messageBox.querySelector('h3').textContent = 'Link Not Set';
+                messageBox.querySelector('p').textContent = 'Please update the code with your CPA offer link.';
+                messageBox.style.transform = 'translate(-50%, -50%) scale(1)';
+                return;
+            }
+            
+            // Show the custom message box
+            messageBox.style.transform = 'translate(-50%, -50%) scale(1)';
+            
+            // Redirect the user to the CPA offer link after a short delay
+            setTimeout(() => {
+                window.location.href = offerLink;
+            }, 1500); // 1.5 second delay before redirecting
+        });
+
+        // Add a click event listener to the close button
+        closeMessage.addEventListener('click', () => {
+            // Hide the custom message box
+            messageBox.style.transform = 'translate(-50%, -50%) scale(0)';
+        });
+    </script>
+</body>
+</html>
